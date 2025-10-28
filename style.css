@@ -1,0 +1,252 @@
+/* 
+  REQUISITO 2: Unidades Relativas
+  A base da fonte do HTML é definida para 62.5%. Isso faz com que 1rem seja igual a 10px (16px * 62.5% = 10px), 
+  facilitando o cálculo de `rem` a partir de valores em `px` (ex: 24px = 2.4rem).
+  Isso garante que o layout e as fontes possam escalar de acordo com as preferências do usuário no navegador.
+*/
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 1.6rem; /* O padrão de fonte para o corpo (equivale a 16px) */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* 
+  REQUISITO 1: Tags Semânticas
+  Uso de <header> e <footer> para as seções de topo e rodapé da página.
+*/
+.blog-header,
+.blog-footer {
+  background-color: #02a28f;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.blog-header h1 {
+  margin: 0;
+  font-size: 2.4rem;
+}
+
+.blog-footer {
+  padding: 0.5rem 0;
+  font-size: 1.4rem;
+}
+
+/* 
+  REQUISITO 3: Flexbox para o Layout Principal
+  REQUISITO 4: Responsividade (Mobile-First)
+
+  A abordagem é "mobile-first". Os estilos base são para telas pequenas (uma única coluna).
+  Media queries são usadas para aplicar layouts mais complexos em telas maiores.
+*/
+.main-content {
+  display: flex;
+  flex-direction: column; /* Empilha as colunas em mobile */
+  align-items: center; /* Centraliza o conteúdo */
+  gap: 2.4rem;
+  padding: 2rem;
+}
+
+.left-column,
+.right-column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+/* Seção Hero */
+.hero img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 744 / 396; /* Mantém a proporção da imagem */
+  object-fit: cover;
+}
+
+/* Seção Posts Recentes */
+.recent-posts h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1.6rem;
+}
+
+/* 
+  REQUISITO 3: Grid para o grid de posts
+  Usamos Grid aqui para ter mais controle sobre o layout dos cards.
+  Em telas menores, ele se comporta como uma única coluna.
+*/
+.posts-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Uma coluna por padrão (mobile) */
+  gap: 2.4rem;
+}
+
+.post-card {
+  background-color: #fff;
+  border: 0.1rem solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-card img {
+  width: 100%;
+  height: 18rem;
+  object-fit: cover;
+}
+
+.post-card .post-content {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Faz o conteúdo crescer para preencher o card */
+}
+
+.post-card .tag {
+  background-color: #02a28f;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.2rem;
+  border-radius: 0.4rem;
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  align-self: flex-start;
+}
+
+.post-card h3 {
+  font-size: 2rem;
+  margin: 0.8rem 0;
+}
+
+.post-card .author {
+  font-size: 1.2rem;
+  color: #777;
+  margin: 0.4rem 0;
+}
+
+.post-card p {
+  flex-grow: 1; /* Empurra a data para o final */
+}
+
+.post-card .date {
+  font-size: 1.2rem;
+  color: #999;
+  margin-top: 1.6rem;
+}
+
+/* Coluna da Direita - Aside */
+.section-title {
+  border: 0.2rem solid #02a28f;
+  padding: 1.2rem;
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 0 0 1.6rem 0;
+}
+
+.popular-posts .small-post {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  margin-bottom: 1.6rem;
+  padding: 1.2rem;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 0.1rem solid #eee;
+}
+
+.small-post img {
+  width: 13.2rem;
+  height: 7rem;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.small-post-content h4 {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.6rem;
+}
+
+.small-post-content .date {
+  font-size: 1.2rem;
+  color: #999;
+}
+
+/* Categorias */
+.categories {
+  background-color: #fff;
+  border: 0.1rem solid #eee;
+  padding: 1.6rem;
+}
+
+.categories ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.categories li:not(:last-child) {
+  margin-bottom: 1.2rem;
+}
+
+.categories a {
+  display: flex;
+  justify-content: space-between;
+  color: #555;
+  font-weight: bold;
+}
+
+/* 
+  REQUISITO 4: Media Query para Tablet
+  A partir de 768px, o layout de posts recentes vira duas colunas.
+*/
+@media (min-width: 768px) {
+  .posts-grid {
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+  }
+}
+
+/* 
+  REQUISITO 4: Media Query para Desktop
+  A partir de 1150px, ativamos o layout principal de duas colunas (esquerda e direita).
+*/
+@media (min-width: 1150px) {
+  .main-content {
+    flex-direction: row; /* Colunas lado a lado */
+    align-items: flex-start; /* Alinha as colunas no topo */
+    max-width: 112.8rem; /* (744px + 360px + 24px de gap) */
+    margin: 0 auto; /* Centraliza o container principal */
+  }
+
+  .left-column {
+    width: 74.4rem; /* 744px */
+  }
+
+  .right-column {
+    width: 36rem; /* 360px */
+  }
+}
+
+/* 
+  REQUISITO 4: Media Query para Ultrawide
+  A partir de 1400px, apenas garantimos que o conteúdo permaneça centralizado e com largura máxima,
+  evitando que o layout se estique demais.
+*/
+@media (min-width: 1400px) {
+  .main-content {
+    max-width: 112.8rem; /* Mantém a largura máxima do desktop */
+  }
+}
