@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* 
   REQUISITO 2: Unidades Relativas
   A base da fonte do HTML é definida para 62.5%. Isso faz com que 1rem seja igual a 10px (16px * 62.5% = 10px), 
@@ -9,7 +15,7 @@ html {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin: 0;
   background-color: #f9f9f9;
   color: #333;
@@ -72,11 +78,46 @@ img {
 }
 
 /* Seção Hero */
+.hero {
+  position: relative; /* Cria um contexto de posicionamento */
+  color: white; /* Define a cor do texto para branco */
+}
+
+.hero-text {
+  position: absolute;
+  top: 79%;
+  left: 3.2%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
 .hero img {
   width: 100%;
   height: auto;
   aspect-ratio: 744 / 396; /* Mantém a proporção da imagem */
   object-fit: cover;
+  border-radius: 1rem;
+}
+
+.hero-text h1 {
+  /* 
+    Uso do clamp() para fonte responsiva: clamp(min, ideal, max)
+    - min: 2.4rem (24px) -> O menor tamanho que a fonte terá em telas pequenas.
+    - ideal: 5vw -> A fonte tentará ter 5% da largura da tela.
+    - max: 4rem (64px) -> O maior tamanho que a fonte terá em telas largas.
+  */
+  font-size: clamp(1rem, 3vw, 3.5rem);
+}
+
+.hero-text p {
+  /* 
+    Uso do clamp() para fonte responsiva: clamp(min, ideal, max)
+    - min: 1.4rem (14px) -> O menor tamanho.
+    - ideal: 2.5vw -> O tamanho preferido (2.5% da largura da tela).
+    - max: 1.8rem (18px) -> O maior tamanho.
+  */
+  font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
 /* Seção Posts Recentes */
@@ -229,6 +270,15 @@ img {
     align-items: flex-start; /* Alinha as colunas no topo */
     max-width: 112.8rem; /* (744px + 360px + 24px de gap) */
     margin: 0 auto; /* Centraliza o container principal */
+    padding: 12rem 0 2rem;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(1rem, 3vw, 3rem);
+  }
+
+  .hero-text {
+    top: 75%;
   }
 
   .left-column {
