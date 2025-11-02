@@ -84,7 +84,7 @@ img {
 
 .hero-text {
   position: absolute;
-  top: 79%;
+  top: 76%;
   left: 3.2%;
   display: flex;
   flex-direction: column;
@@ -105,7 +105,7 @@ img {
     - ideal -> A fonte tentará ter 5% da largura da tela.
     - max -> O maior tamanho que a fonte terá em telas largas.
   */
-  font-size: clamp(1rem, 3vw, 3.5rem);
+  font-size: clamp(1rem, 3.5vw, 4rem);
 }
 
 .hero-text p {
@@ -242,6 +242,15 @@ img {
   font-weight: bold;
 }
 
+.post-card,
+.categories,
+.small-post {
+  box-shadow: 0 4px 24px rgba(97, 97, 97, 0.12),
+    /* Cinza escuro (usando #616161) */ 0 1.5px 3px rgba(0, 0, 0, 0.05); /* Sombra extra sutil preta */
+  border-radius: 1rem;
+  transition: box-shadow 0.2s;
+}
+
 /* 
   REQUISITO 4: Media Query para Tablet
   A partir de 768px, o layout de posts recentes vira duas colunas.
@@ -270,18 +279,17 @@ img {
   }
 
   .hero-text h1 {
-    font-size: clamp(1rem, 2vw, 3rem);
+    font-size: clamp(1rem, 2.5vw, 4rem);
   }
 
   .hero-text p {
-    font-size: clamp(1rem, 1vw, 1.6rem);
+    font-size: clamp(1rem, 1vw, 2rem);
   }
 
   .hero-text {
-    top: 75%;
+    top: 77%;
   }
-
-  .left-column {
+  S .left-column {
     width: 103.4rem; /* 1034px */
   }
 
@@ -298,5 +306,9 @@ img {
 @media (min-width: 1400px) {
   .main-content {
     /*   max-width: 112.8rem;  Mantém a largura máxima do desktop */
+  }
+
+  .hero-text {
+    top: 80%;
   }
 }
