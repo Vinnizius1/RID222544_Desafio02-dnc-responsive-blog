@@ -40,18 +40,33 @@ img {
 .blog-footer {
   background-color: #02a28f;
   color: white;
-  text-align: center;
   padding: 1rem 0;
 }
 
-.blog-header h1 {
+/* .blog-header h1 {
   margin: 0;
-  font-size: 2.4rem;
+  font-size: 3.6rem;
 }
-
+ */
 .blog-footer {
   padding: 0.5rem 0;
   font-size: 1.4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 7rem;
+  padding: 0 5rem; /* Mesmo padding lateral do .main-content em mobile */
+
+  > h1 {
+    font-size: 2.4rem;
+  }
 }
 
 /* 
@@ -78,25 +93,27 @@ img {
 
 /* Seção Hero */
 .hero {
-  position: relative; /* Cria um contexto de posicionamento */
-  color: white; /* Define a cor do texto para branco */
+  position: relative;
+  color: white;
+
+  /* Define a imagem de fundo, começando com a versão mobile */
+  background: url("images/hero-image-mobile.jpg") no-repeat center center;
+  background-size: cover;
+
+  /* Proporção da imagem mobile */
+  aspect-ratio: 368 / 396;
+  border-radius: 1rem;
 }
 
 .hero-text {
   position: absolute;
-  top: 76%;
-  left: 3.2%;
+  top: 70%;
+  left: 6%;
   display: flex;
   flex-direction: column;
 }
 
-.hero img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 744 / 396; /* Mantém a proporção da imagem */
-  object-fit: cover;
-  border-radius: 1rem;
-}
+/* A tag <img> foi movida para o background do .hero, a regra .hero img não é mais necessária. */
 
 .hero-text h1 {
   /* 
@@ -105,11 +122,12 @@ img {
     - ideal -> A fonte tentará ter 5% da largura da tela.
     - max -> O maior tamanho que a fonte terá em telas largas.
   */
-  font-size: clamp(1rem, 3.5vw, 4rem);
+  font-size: clamp(1.6rem, 3.5vw, 4rem);
+  margin-right: 45px;
 }
 
 .hero-text p {
-  font-size: clamp(1.1rem, 1.6vw, 2rem);
+  font-size: clamp(1.3rem, 1.9vw, 2rem);
 }
 
 /* Seção Posts Recentes */
@@ -251,6 +269,18 @@ img {
   transition: box-shadow 0.2s;
 }
 
+/* Media Query para ajustar o texto do Hero em telas menores */
+@media (min-width: 500px) {
+  .hero-text {
+    /* Sobe o texto para compensar a quebra de linha e evitar que saia da imagem */
+    top: 78%;
+  }
+
+  .mobile-break {
+    display: none;
+  }
+}
+
 /* 
   REQUISITO 4: Media Query para Tablet
   A partir de 768px, o layout de posts recentes vira duas colunas.
@@ -259,6 +289,28 @@ img {
   .posts-grid {
     grid-template-columns: repeat(2, 1fr); /* Duas colunas */
   }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 7rem;
+    padding: 0 5rem; /* Mesmo padding lateral do .main-content em mobile */
+
+    > h1 {
+      font-size: 3.6rem;
+    }
+  }
+
+  .hero {
+    background-image: url("images/hero-image.jpg");
+    aspect-ratio: 744 / 396; /* Proporção da imagem de desktop */
+  }
+
+  .hero-text {
+    top: 75%;
+    left: 3.2%;
+  }
 }
 
 /* 
@@ -266,6 +318,10 @@ img {
   A partir de 1150px, ativamos o layout principal de duas colunas (esquerda e direita).
 */
 @media (min-width: 1150px) {
+  .header-container {
+    padding: 0 12rem; /* Mesmo padding lateral do .main-content em desktop */
+  }
+
   .main-content {
     flex-direction: row; /* Colunas lado a lado */
     align-items: flex-start; /* Alinha as colunas no topo */
@@ -273,9 +329,13 @@ img {
     /* max-width: 112.8rem; (744px + 360px + 24px de gap) */
 
     /* margin: 0 auto;  Centraliza o container principal */
-    padding: 12rem;
+    padding: 6rem 12rem;
 
     justify-content: center; /*  */
+  }
+
+  .blog-header h1 {
+    font-size: 3.6rem;
   }
 
   .hero-text h1 {
@@ -286,9 +346,6 @@ img {
     font-size: clamp(1rem, 1vw, 2rem);
   }
 
-  .hero-text {
-    top: 77%;
-  }
   S .left-column {
     width: 103.4rem; /* 1034px */
   }
