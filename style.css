@@ -168,24 +168,19 @@ img {
 }
 
 .post-card .tag {
-  background-color: #02a28f;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  font-size: 1.2rem;
-  border-radius: 0.4rem;
-  display: inline-block;
-  margin-bottom: 0.8rem;
-  align-self: flex-start;
+  color: #02a28f;
+  font-size: 1.4rem;
 }
 
 .post-card h3 {
   font-size: 2rem;
   margin: 0.8rem 0;
+  color: #000;
 }
 
 .post-card .author {
-  font-size: 1.2rem;
-  color: #777;
+  font-size: 1.4rem;
+  color: #616161;
   margin: 0.4rem 0;
 }
 
@@ -194,8 +189,8 @@ img {
 }
 
 .post-card .date {
-  font-size: 1.2rem;
-  color: #999;
+  font-size: 1.4rem;
+  color: #616161;
   margin-top: 1.6rem;
 }
 

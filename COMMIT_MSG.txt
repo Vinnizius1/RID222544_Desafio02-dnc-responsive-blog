@@ -1,0 +1,7 @@
+feat: Aplica responsividade avançada no hero e expande docs
+
+- Implementa uma imagem de fundo otimizada para o hero em telas mobile.
+- Utiliza clamp() e media queries para garantir a fluidez e o posicionamento correto do título principal em todas as resoluções.
+- Adiciona negrito na autoria dos posts para melhoria visual.
+- Expande a documentação de responsividade com anotações detalhadas sobre clamp(), semântica de imagens e a propriedade display.
+- Refatora o CSS removendo código não utilizado.

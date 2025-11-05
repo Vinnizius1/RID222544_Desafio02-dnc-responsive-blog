@@ -58,3 +58,57 @@ Pense nisso como um sanduíche de regras:
 - **Sênior:** Substitui múltiplas *media queries* por uma única linha declarativa. Isso significa um CSS mais enxuto, mais fácil de manter e um controle muito mais granular sobre a tipografia e os espaçamentos fluidos (*fluid typography* e *fluid spacing*).
 
 **Dica de ouro:** Use `clamp()` não apenas para `font-size`, but para `padding`, `margin`, e `gap`. Ele é a chave para um design verdadeiramente fluido, não apenas responsivo.
+
+---
+
+### 3. Imagens: Conteúdo (HTML) vs. Decoração (CSS)
+
+Uma decisão crucial no desenvolvimento web é como e onde declarar uma imagem. A escolha errada pode impactar a semântica, a acessibilidade e a manutenção do site.
+
+#### Quando usar `<img />` no HTML?
+
+Use a tag `<img>` para imagens que são **conteúdo essencial**.
+
+-   **O que são?** Imagens de produtos, fotos em um artigo de blog, avatares de usuário. Se a imagem desaparecesse, o usuário perderia informação importante.
+-   **Por que no HTML?**
+    -   **Acessibilidade:** A tag `<img>` possui o atributo `alt`, que é fundamental. Leitores de tela o utilizam para descrever a imagem a usuários com deficiência visual.
+    -   **SEO (Otimização para Buscadores):** Motores de busca como o Google indexam o texto do atributo `alt` para entender o conteúdo da página.
+    -   **Semântica:** É o elemento semanticamente correto para conteúdo visual.
+
+**Exemplo do nosso projeto:** As imagens de cada post em "Posts mais recentes".
+
+#### Quando usar `background-image` no CSS?
+
+Use a propriedade `background-image` para imagens que são **puramente decorativas**.
+
+-   **O que são?** Imagens de fundo, texturas, padrões, ícones que apenas suportam o design sem adicionar informação. Se a imagem desaparecesse, a funcionalidade e a informação principal da página permaneceriam intactas.
+-   **Por que no CSS?**
+    -   **Separação de Preocupações:** Mantém o HTML limpo, focado no conteúdo, enquanto o CSS cuida da aparência.
+    -   **Controle de Estilo:** O CSS oferece propriedades poderosas como `background-size`, `background-position`, `background-repeat` e `background-blend-mode` que permitem um controle fino sobre como a imagem se comporta como um fundo.
+    -   **Responsividade:** É fácil trocar a imagem de fundo usando media queries para diferentes tamanhos de tela, sem precisar de elementos HTML extras.
+
+**Exemplo do nosso projeto:** A imagem principal no topo da página (`hero-image`).
+
+---
+
+### 4. A Tríade do `display`: `block` vs. `inline` vs. `inline-block`
+
+Entender como um elemento se comporta no layout é crucial. A propriedade `display` controla isso.
+
+#### `display: block`
+- **Comportamento:** Ocupa toda a largura disponível e sempre começa em uma nova linha.
+- **Pense em:** Uma caixa que não deixa nada ficar ao seu lado.
+- **Aceita Dimensões?** Sim (`width`, `height`, `margin`, `padding` funcionam normalmente).
+- **Exemplos comuns:** `<div>`, `<p>`, `<h1>`, `<section>`.
+
+#### `display: inline`
+- **Comportamento:** Flui junto com o texto, ocupando apenas o espaço necessário. Não quebra a linha.
+- **Pense em:** Uma palavra dentro de uma frase.
+- **Aceita Dimensões?** **Não.** Ignora `width`, `height`, `margin-top` e `margin-bottom`.
+- **Exemplos comuns:** `<span>`, `<a>`, `<b>`, `<img>`.
+
+#### `display: inline-block`
+- **Comportamento:** O melhor dos dois mundos. Flui como um elemento `inline` (não quebra a linha), mas se comporta como um `block` em relação às dimensões.
+- **Pense em:** Palavras especiais em uma frase que você pode esticar e dar espaçamento.
+- **Aceita Dimensões?** **Sim.** Aceita `width`, `height`, `margin` e `padding` em todas as direções.
+- **Caso de uso perfeito:** Tags, botões ou qualquer elemento pequeno que precisa de espaçamento (`padding` ou `margin`) e deve ficar ao lado de outros elementos.
