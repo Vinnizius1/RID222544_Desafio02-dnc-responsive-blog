@@ -152,6 +152,7 @@ img {
   border: 0.1rem solid #eee;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .post-card img {
@@ -165,6 +166,15 @@ img {
   display: flex;
   flex-direction: column;
   flex-grow: 1; /* Faz o conteúdo crescer para preencher o card */
+
+  & p {
+    align-content: end;
+    /* webkit para  */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* quantidade de linhas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 
 .post-card .tag {
