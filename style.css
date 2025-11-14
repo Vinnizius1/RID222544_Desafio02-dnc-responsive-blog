@@ -122,12 +122,12 @@ img {
     - ideal -> A fonte tentará ter 5% da largura da tela.
     - max -> O maior tamanho que a fonte terá em telas largas.
   */
-  font-size: clamp(1.6rem, 3.5vw, 4rem);
+  font-size: clamp(1.5rem, 3.5vw, 4rem);
   margin-right: 45px;
 }
 
 .hero-text p {
-  font-size: clamp(1.3rem, 1.9vw, 2rem);
+  font-size: clamp(1.2rem, 1.9vw, 2rem);
 }
 
 /* Seção Posts Recentes */
@@ -265,6 +265,20 @@ img {
 }
 
 /* Media Query para ajustar o texto do Hero em telas menores */
+@media (max-width: 500px) {
+  /*  .hero-text {
+    top: 65%;
+  } */
+
+  .hero-text h1 {
+    font-size: clamp(1rem, 4vw, 4rem);
+  }
+
+  .hero-text p {
+    font-size: clamp(1rem, 3vw, 2rem);
+  }
+}
+
 @media (min-width: 500px) {
   .hero-text {
     /* Sobe o texto para compensar a quebra de linha e evitar que saia da imagem */

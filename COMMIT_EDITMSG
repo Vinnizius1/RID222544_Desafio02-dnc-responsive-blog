@@ -1,0 +1,9 @@
+feat: Adiciona guia de responsividade e ajusta layout dos posts
+
+Este commit introduz duas melhorias principais:
+
+1.  Cria o arquivo `licoes_responsividade.md`, um guia detalhado com conceitos essenciais de CSS para design responsivo, como mobile-first, unidades relativas, `clamp()`, e o uso correto de imagens e da propriedade `display`.
+
+2.  Ajusta o layout dos cards de post no `style.css`, utilizando `flex-grow` para garantir que o conteúdo interno se expanda, alinhando as datas na parte inferior e mantendo a consistência visual entre os cards, mesmo com textos de tamanhos diferentes.
+
+Além disso, o arquivo temporário de commit foi adicionado ao `.gitignore`.
