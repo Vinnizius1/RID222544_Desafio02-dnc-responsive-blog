@@ -35,69 +35,80 @@
         <section class="recent-posts">
           <h2>Posts mais recentes</h2>
           <div class="posts-grid">
+            <!--  -->
             <article class="post-card">
               <img src="/images/post1.jpg" alt="Desenvolvimento mobile" />
+
+              <!-- checkbox oculto que controla o expandir/recolher -->
+              <input type="checkbox" id="post-1-toggle" class="post-toggle" />
+
               <div class="post-content">
                 <span class="tag">desenvolvimento</span>
                 <h3>Desenvolvimento mobile</h3>
-                <p class="author"><b>by</b> John Doe</p>
-                <p>
+                <p class="author"><b>by</b> Fabio Tetsuo</p>
+
+                <!-- texto que será truncado em 3 linhas -->
+                <label for="post-1-toggle" class="post-excerpt">
                   Lorem ipsum dolor sit amet consectetur. In vitae urna commodo
                   amet congue integer dapibus. Interdum semper mauris convallis
                   fusce enim odio. Vitae montes ridiculus felis. Lorem ipsum
                   dolor sit amet consectetur. In vitae urna commodo amet congue
                   integer dapibus. Interdum semper mauris convallis fusce enim
                   odio. Vitae montes ridiculus felis.
-                </p>
+                </label>
+
                 <p class="date">22 Agosto 2022</p>
               </div>
             </article>
+
+            <!--  -->
+
             <article class="post-card">
-              <img
-                src="/images/post2.jpg"
-                alt="Placeholder para post recente"
-              />
+              <img src="/images/post2.jpg" alt="Título do Post Recente 2" />
+
+              <input type="checkbox" id="post-2-toggle" class="post-toggle" />
+
               <div class="post-content">
-                <span class="tag">Design</span>
-                <h3>Título do Post Recente 2</h3>
-                <p class="author"><b>by</b> Jane Smith</p>
-                <p>
-                  Um breve resumo do conteúdo do post, incentivando o leitor a
-                  clicar para ler mais.
-                </p>
+                <span class="tag">saude</span>
+                <h3>Balancear vida profissional e pessoal</h3>
+                <p class="author"><b>by</b> Ridho Satriawan</p>
+                <label for="post-2-toggle" class="post-excerpt">
+                  Lorem ipsum dolor sit amet consectetur. Et consectetur at
+                  consectetur sed nisl tempor.
+                </label>
                 <p class="date">28 de Outubro, 2025</p>
               </div>
             </article>
+            <!--  -->
             <article class="post-card">
-              <img
-                src="https://via.placeholder.com/360x180"
-                alt="Placeholder para post recente"
-              />
+              <img src="/images/post3.jpg" alt="Título do Post Recente 3" />
+              <input type="checkbox" id="post-3-toggle" class="post-toggle" />
+
               <div class="post-content">
-                <span class="tag">Carreira</span>
-                <h3>Título do Post Recente 3</h3>
+                <span class="tag">desenvolvimento</span>
+                <h3>Configurando VSCode</h3>
                 <p class="author"><b>by</b> Alex Johnson</p>
-                <p>
-                  Um breve resumo do conteúdo do post, incentivando o leitor a
-                  clicar para ler mais.
-                </p>
-                <p class="date">28 de Outubro, 2025</p>
+                <label for="post-3-toggle" class="post-excerpt">
+                  Lorem ipsum dolor sit amet consectetur. Erat interdum tortor
+                  ac sagittis id a etiam. Tellus vitae arcu dignissim massa
+                  aliquam vel tellus. Ipsum massa arcu nulla sed purus in ac.
+                </label>
+                <p class="date">21 de Outubro, 2025</p>
               </div>
             </article>
+            <!--  -->
             <article class="post-card">
-              <img
-                src="https://via.placeholder.com/360x180"
-                alt="Placeholder para post recente"
-              />
+              <img src="/images/post4.jpg" alt="Título do Post Recente 4" />
+              <input type="checkbox" id="post-4-toggle" class="post-toggle" />
+
               <div class="post-content">
-                <span class="tag">Notícias</span>
-                <h3>Título do Post Recente 4</h3>
-                <p class="author"><b>by</b> Emily White</p>
-                <p>
-                  Um breve resumo do conteúdo do post, incentivando o leitor a
-                  clicar para ler mais.
-                </p>
-                <p class="date">28 de Outubro, 2025</p>
+                <span class="tag">produtividade</span>
+                <h3>2 monitores ou 1 ultrawide?</h3>
+                <p class="author"><b>by</b> Vinicius Matos</p>
+                <label for="post-4-toggle" class="post-excerpt"
+                  >E agora, José?</label
+                >
+                <p class="date">28 de Outubro, 2023</p>
               </div>
             </article>
           </div>
