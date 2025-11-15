@@ -2,25 +2,44 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
+    <!-- Mantém o layout responsivo ocupando toda a largura do dispositivo -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Dev News</title>
+
+    <!-- Fonte principal do projeto -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Estilos principais da página -->
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
+    <!-- 
+      Cabeçalho semântico do blog.
+      Contém apenas o título/marca do site.
+    -->
     <header class="blog-header">
       <div class="header-container">
         <h1>The Dev News</h1>
       </div>
     </header>
 
+    <!--
+      Conteúdo principal da página.
+      Mobile-first: começa em uma coluna e vira duas colunas em telas maiores.
+    -->
     <main class="main-content">
+      <!-- Coluna esquerda: hero + posts recentes -->
       <div class="left-column">
+        <!-- 
+          Hero principal da página.
+          A imagem é decorativa e vem via CSS (background-image).
+        -->
         <section class="hero">
           <div class="hero-text">
             <p>opinião</p>
@@ -32,22 +51,36 @@
           </div>
         </section>
 
+        <!-- Seção de posts mais recentes -->
         <section class="recent-posts">
           <h2>Posts mais recentes</h2>
+
+          <!--
+            Grade responsiva de cards de post.
+            1 coluna no mobile, 2 colunas a partir de 768px.
+          -->
           <div class="posts-grid">
-            <!--  -->
+            <!-- Card 1 -->
             <article class="post-card">
+              <!-- Imagem de conteúdo (usa <img> pois é parte do card) -->
               <img src="/images/post1.jpg" alt="Desenvolvimento mobile" />
 
-              <!-- checkbox oculto que controla o expandir/recolher -->
+              <!-- 
+                Checkbox oculto que controla expandir/recolher do texto.
+                O label .post-excerpt aponta para este id.
+              -->
               <input type="checkbox" id="post-1-toggle" class="post-toggle" />
 
+              <!-- Conteúdo textual do card -->
               <div class="post-content">
                 <span class="tag">desenvolvimento</span>
                 <h3>Desenvolvimento mobile</h3>
                 <p class="author"><b>by</b> Fabio Tetsuo</p>
 
-                <!-- texto que será truncado em 3 linhas -->
+                <!-- 
+                  Resumo clicável: truncado em 3 linhas via CSS.
+                  Ao clicar, aciona o checkbox e expande o texto.
+                -->
                 <label for="post-1-toggle" class="post-excerpt">
                   Lorem ipsum dolor sit amet consectetur. In vitae urna commodo
                   amet congue integer dapibus. Interdum semper mauris convallis
@@ -57,12 +90,12 @@
                   odio. Vitae montes ridiculus felis.
                 </label>
 
+                <!-- Data alinhada ao rodapé do card com flex + min-height -->
                 <p class="date">22 Agosto 2022</p>
               </div>
             </article>
 
-            <!--  -->
-
+            <!-- Card 2 -->
             <article class="post-card">
               <img src="/images/post2.jpg" alt="Título do Post Recente 2" />
 
@@ -72,42 +105,53 @@
                 <span class="tag">saude</span>
                 <h3>Balancear vida profissional e pessoal</h3>
                 <p class="author"><b>by</b> Ridho Satriawan</p>
+
                 <label for="post-2-toggle" class="post-excerpt">
                   Lorem ipsum dolor sit amet consectetur. Et consectetur at
                   consectetur sed nisl tempor.
                 </label>
+
                 <p class="date">28 de Outubro, 2025</p>
               </div>
             </article>
-            <!--  -->
+
+            <!-- Card 3 -->
             <article class="post-card">
               <img src="/images/post3.jpg" alt="Título do Post Recente 3" />
+
               <input type="checkbox" id="post-3-toggle" class="post-toggle" />
 
               <div class="post-content">
                 <span class="tag">desenvolvimento</span>
                 <h3>Configurando VSCode</h3>
                 <p class="author"><b>by</b> Alex Johnson</p>
+
                 <label for="post-3-toggle" class="post-excerpt">
                   Lorem ipsum dolor sit amet consectetur. Erat interdum tortor
                   ac sagittis id a etiam. Tellus vitae arcu dignissim massa
                   aliquam vel tellus. Ipsum massa arcu nulla sed purus in ac.
                 </label>
+
                 <p class="date">21 de Outubro, 2025</p>
               </div>
             </article>
-            <!--  -->
+
+            <!-- Card 4 -->
             <article class="post-card">
               <img src="/images/post4.jpg" alt="Título do Post Recente 4" />
+
               <input type="checkbox" id="post-4-toggle" class="post-toggle" />
 
               <div class="post-content">
                 <span class="tag">produtividade</span>
                 <h3>2 monitores ou 1 ultrawide?</h3>
                 <p class="author"><b>by</b> Vinicius Matos</p>
-                <label for="post-4-toggle" class="post-excerpt"
-                  >E agora, José?</label
-                >
+
+                <!-- Exemplo de resumo curto: ainda clicável, mas sem clamp visual -->
+                <label for="post-4-toggle" class="post-excerpt">
+                  E agora, José?
+                </label>
+
                 <p class="date">28 de Outubro, 2023</p>
               </div>
             </article>
@@ -115,9 +159,12 @@
         </section>
       </div>
 
+      <!-- Coluna direita: posts populares + categorias -->
       <aside class="right-column">
+        <!-- Lista de posts populares em formato de cards compactos -->
         <section class="popular-posts">
           <h2 class="section-title">Posts populares</h2>
+
           <article class="small-post">
             <img
               src="https://via.placeholder.com/132x70"
@@ -128,6 +175,7 @@
               <p class="date">28 de Outubro, 2025</p>
             </div>
           </article>
+
           <article class="small-post">
             <img
               src="https://via.placeholder.com/132x70"
@@ -138,6 +186,7 @@
               <p class="date">28 de Outubro, 2025</p>
             </div>
           </article>
+
           <article class="small-post">
             <img
               src="https://via.placeholder.com/132x70"
@@ -150,6 +199,7 @@
           </article>
         </section>
 
+        <!-- Navegação por categorias -->
         <section class="categories">
           <h2 class="section-title">Categorias</h2>
           <nav>
@@ -172,6 +222,7 @@
       </aside>
     </main>
 
+    <!-- Rodapé semântico com créditos -->
     <footer class="blog-footer">
       <p>Copyright@The Dev News</p>
     </footer>

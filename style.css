@@ -1,40 +1,47 @@
+/* ======================================================================= */
+/*  RESET BÁSICO E TIPOGRAFIA                                              */
+/* ======================================================================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 
-  REQUISITO 2: Unidades Relativas
-  A base da fonte do HTML é definida para 62.5%. Isso faz com que 1rem seja igual a 10px (16px * 62.5% = 10px), 
-  facilitando o cálculo de `rem` a partir de valores em `px` (ex: 24px = 2.4rem).
-  Isso garante que o layout e as fontes possam escalar de acordo com as preferências do usuário no navegador.
+/*
+  REQUISITO 2: Unidades relativas.
+  62.5% deixa 1rem ≈ 10px, o que facilita converter medidas.
 */
 html {
   font-size: 62.5%;
 }
 
+/* Fonte base e cor padrão do site */
 body {
   font-family: "Montserrat", sans-serif;
-  margin: 0;
   background-color: #f9f9f9;
   color: #333;
-  font-size: 1.6rem; /* O padrão de fonte para o corpo (equivale a 16px) */
+  font-size: 1.6rem; /* 16px */
 }
 
+/* Links herdam a cor do texto e não têm sublinhado por padrão */
 a {
   text-decoration: none;
   color: inherit;
 }
 
+/* Imagens se adaptam ao container */
 img {
   max-width: 100%;
   display: block;
 }
 
-/* 
-  REQUISITO 1: Tags Semânticas
-  Uso de <header> e <footer> para as seções de topo e rodapé da página.
+/* ======================================================================= */
+/*  HEADER E FOOTER                                                        */
+/* ======================================================================= */
+
+/*
+  REQUISITO 1: Tags semânticas <header> e <footer>.
 */
 .blog-header,
 .blog-footer {
@@ -43,11 +50,7 @@ img {
   padding: 1rem 0;
 }
 
-/* .blog-header h1 {
-  margin: 0;
-  font-size: 3.6rem;
-}
- */
+/* Rodapé centralizado vertical e horizontalmente */
 .blog-footer {
   padding: 0.5rem 0;
   font-size: 1.4rem;
@@ -57,32 +60,36 @@ img {
   align-items: center;
 }
 
+/* Container do título no header */
 .header-container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 7rem;
-  padding: 0 5rem; /* Mesmo padding lateral do .main-content em mobile */
-
-  > h1 {
-    font-size: 2.4rem;
-  }
+  padding: 0 5rem; /* mesmo padding lateral do .main-content em mobile */
 }
 
-/* 
-  REQUISITO 3: Flexbox para o Layout Principal
-  REQUISITO 4: Responsividade (Mobile-First)
+/* Estilo específico para o h1 dentro do header */
+.header-container > h1 {
+  font-size: 2.4rem;
+}
 
-  A abordagem é "mobile-first". Os estilos base são para telas pequenas (uma única coluna).
-  Media queries são usadas para aplicar layouts mais complexos em telas maiores.
+/* ======================================================================= */
+/*  LAYOUT PRINCIPAL (MAIN)                                                */
+/*  Mobile-first: uma coluna; em desktop vira duas colunas.                */
+/* ======================================================================= */
+
+/*
+  REQUISITO 3 e 4: Flexbox para layout principal + Mobile-first.
 */
 .main-content {
   display: flex;
-  flex-direction: column; /* Empilha as colunas em mobile */
+  flex-direction: column; /* empilha as colunas em mobile */
   gap: 2.4rem;
   padding: 5rem;
 }
 
+/* Colunas lógica esquerda/direita (viram colunas lado a lado em desktop) */
 .left-column,
 .right-column {
   width: 100%;
@@ -91,20 +98,28 @@ img {
   gap: 2.4rem;
 }
 
-/* Seção Hero */
+/* ======================================================================= */
+/*  HERO                                                                   */
+/* ======================================================================= */
+
+/*
+  A imagem do hero é decorativa e vem via background-image.
+  Em mobile usa hero-image-mobile; em telas maiores troca para hero-image.
+*/
 .hero {
   position: relative;
   color: white;
 
-  /* Define a imagem de fundo, começando com a versão mobile */
+  /* imagem de fundo para mobile */
   background: url("images/hero-image-mobile.jpg") no-repeat center center;
   background-size: cover;
 
-  /* Proporção da imagem mobile */
+  /* proporção da imagem mobile */
   aspect-ratio: 368 / 396;
   border-radius: 1rem;
 }
 
+/* Texto sobreposto no hero */
 .hero-text {
   position: absolute;
   top: 70%;
@@ -113,71 +128,49 @@ img {
   flex-direction: column;
 }
 
-/* A tag <img> foi movida para o background do .hero, a regra .hero img não é mais necessária. */
-
+/*
+  Título fluido com clamp: cresce com a viewport,
+  mas respeita limites mínimo e máximo.
+*/
 .hero-text h1 {
-  /* 
-    Uso do clamp() para fonte responsiva: clamp(min, ideal, max)
-    - min -> O menor tamanho que a fonte terá em telas pequenas.
-    - ideal -> A fonte tentará ter 5% da largura da tela.
-    - max -> O maior tamanho que a fonte terá em telas largas.
-  */
   font-size: clamp(1.5rem, 3.5vw, 4rem);
-  margin-right: 45px;
+  margin-right: 4.5rem;
 }
 
+/* Subtítulos/parágrafos do hero também são fluidos */
 .hero-text p {
   font-size: clamp(1.2rem, 1.9vw, 2rem);
 }
 
-/* Seção Posts Recentes */
+/* ======================================================================= */
+/*  POSTS RECENTES (GRID DE CARDS)                                         */
+/* ======================================================================= */
+
+/* Título da seção de posts recentes */
 .recent-posts h2 {
   font-size: 2.4rem;
   margin-bottom: 1.6rem;
 }
 
-/* 
-  REQUISITO 3: Grid para o grid de posts
-  Usamos Grid aqui para ter mais controle sobre o layout dos cards.
-  Em telas menores, ele se comporta como uma única coluna.
+/*
+  REQUISITO 3: Grid para a listagem de posts.
+  Começa com 1 coluna no mobile e ganha mais colunas via media query.
 */
 .posts-grid {
   display: grid;
-  grid-template-columns: 1fr; /* Uma coluna por padrão (mobile) */
+  grid-template-columns: 1fr; /* uma coluna por padrão (mobile) */
   gap: 2.4rem;
-  align-items: start; /* <- novo */
+  align-items: start; /* cada card usa a própria altura */
 }
 
-/* .post-card {
-  background-color: #fff;
-  border: 0.1rem solid #eee;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-} */
+/* ======================================================================= */
+/*  CARD DE POST PRINCIPAL                                                 */
+/* ======================================================================= */
 
-/* .post-card img {
-  width: 100%;
-  height: 18rem;
-  object-fit: cover;
-} */
-
-/* .post-card .post-content {
-  padding: 1.6rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1; 
-
-  & p {
-    align-content: end;
-    
-    display: -webkit-box;
-    -webkit-line-clamp: 3; 
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-} */
-
+/*
+  Card base dos posts recentes.
+  Min-height garante altura consistente entre cards "fechados".
+*/
 .post-card {
   background-color: #fff;
   border: 0.1rem solid #eee;
@@ -186,16 +179,17 @@ img {
   flex-direction: column;
   cursor: pointer;
   box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.05);
-  min-height: 43rem; /* ajuste deste valor no olho */
+  min-height: 43rem; /* ajustado no olho para manter alinhamento visual */
   transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
-  /* garante que nada “vaze” dos cantos arredondados */
 }
 
+/* Microinteração: leve elevação no hover */
 .post-card:hover {
   transform: translateY(-0.4rem);
   box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.12);
 }
 
+/* Imagem do topo do card (conteúdo) */
 .post-card img {
   width: 100%;
   height: 18rem;
@@ -203,7 +197,7 @@ img {
   border-radius: 1rem 1rem 0 0;
 }
 
-/* conteúdo interno do card */
+/* Conteúdo textual do card em coluna */
 .post-card .post-content {
   padding: 1.6rem;
   display: flex;
@@ -212,18 +206,23 @@ img {
   flex-grow: 1;
 }
 
-/* parágrafo que será limitado em 3 linhas */
+/*
+  Resumo do post:
+  - É um <label> clicável que controla o checkbox.
+  - Fica truncado em 3 linhas via -webkit-line-clamp.
+  - flex-grow empurra a data para o rodapé do card.
+*/
 .post-card .post-content .post-excerpt {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3; /* quantidade de linhas */
+  -webkit-line-clamp: 3; /* quantidade de linhas visíveis */
   overflow: hidden;
   position: relative;
   flex-grow: 1;
   cursor: pointer;
 }
 
-/* opcional: degradê no fim do texto para indicar que há mais */
+/* Degradê no fim do texto, sugerindo que há mais conteúdo */
 .post-card .post-content .post-excerpt::after {
   content: "";
   position: absolute;
@@ -234,72 +233,63 @@ img {
   background: linear-gradient(to bottom, transparent, #fff);
 }
 
-/* escondemos o checkbox, só usamos o estado :checked */
+/*
+  Checkbox hack:
+  - O input é invisível.
+  - Quando checado, remove o clamp e o degradê,
+    expandindo o texto do card clicado.
+*/
 .post-toggle {
   display: none;
 }
 
-/* quando o checkbox estiver checado, mostra o texto completo */
 .post-toggle:checked + .post-content .post-excerpt {
   -webkit-line-clamp: unset;
 }
 
-/* e removemos o degradê quando expandido */
 .post-toggle:checked + .post-content .post-excerpt::after {
   content: none;
 }
 
-/* botão "Ler mais" com cara de link, alinhado abaixo da data */
-.post-read-more {
-  align-self: flex-start;
-  margin-top: 0.4rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  color: #0066cc;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-/* sublinhado só no hover, para ficar mais elegante */
-.post-read-more:hover {
-  text-decoration: underline;
-}
-
-/* texto padrão quando NÃO está expandido */
-.post-read-more::after {
-  content: "Ler mais";
-}
-
-/* quando o checkbox está checado, mudamos para "Ler menos" */
-.post-toggle:checked + .post-content .post-read-more::after {
-  content: "Ler menos";
-}
-
+/* Tag/categoria do post */
 .post-card .tag {
   color: #02a28f;
   font-size: 1.4rem;
 }
 
+/* Título do card */
 .post-card h3 {
   font-size: 2rem;
   margin: 0.8rem 0;
   color: #000;
 }
 
+/* Autor do post */
 .post-card .author {
   font-size: 1.4rem;
   color: #616161;
   margin: 0.4rem 0;
 }
 
+/* Data fica próxima ao rodapé do card */
 .post-card .date {
   font-size: 1.4rem;
   color: #616161;
   margin-top: 1.6rem;
-  align-content: center;
 }
 
-/* Coluna da Direita - Aside */
+/*
+  OBS: .post-read-more foi deixado de fora pois o fluxo atual
+  usa o próprio texto (label.post-excerpt) como gatilho de expandir.
+  Se quiser voltar ao botão "Ler mais", dá para reaproveitar
+  a lógica antiga e este espaço no CSS.
+*/
+
+/* ======================================================================= */
+/*  SIDEBAR: POSTS POPULARES E CATEGORIAS                                  */
+/* ======================================================================= */
+
+/* Título de seções na sidebar (Posts populares / Categorias) */
 .section-title {
   border: 0.2rem solid #02a28f;
   padding: 1.2rem;
@@ -308,17 +298,18 @@ img {
   margin: 0 0 1.6rem 0;
 }
 
+/* Card compacto de post popular */
 .popular-posts .small-post {
   display: flex;
   gap: 1.6rem;
   align-items: center;
   margin-bottom: 1.6rem;
   padding: 1.2rem;
-  box-sizing: border-box;
   background-color: #fff;
   border: 0.1rem solid #eee;
 }
 
+/* Imagem do post popular */
 .small-post img {
   width: 13.2rem;
   height: 7rem;
@@ -326,17 +317,19 @@ img {
   flex-shrink: 0;
 }
 
+/* Título do post popular */
 .small-post-content h4 {
   margin: 0 0 0.8rem 0;
   font-size: 1.6rem;
 }
 
+/* Data em posts populares */
 .small-post-content .date {
   font-size: 1.2rem;
   color: #999;
 }
 
-/* Categorias */
+/* Box de categorias */
 .categories {
   background-color: #fff;
   border: 0.1rem solid #eee;
@@ -349,10 +342,12 @@ img {
   margin: 0;
 }
 
+/* Espaçamento entre itens de categoria */
 .categories li:not(:last-child) {
   margin-bottom: 1.2rem;
 }
 
+/* Link de categoria: título + quantidade alinhados */
 .categories a {
   display: flex;
   justify-content: space-between;
@@ -360,21 +355,25 @@ img {
   font-weight: bold;
 }
 
+/*
+  Reuso de estilo de card para post-card, categories e small-post:
+  mesma sombra e radius, com transição suave.
+*/
 .post-card,
 .categories,
 .small-post {
-  box-shadow: 0 4px 24px rgba(97, 97, 97, 0.12),
-    /* Cinza escuro (usando #616161) */ 0 1.5px 3px rgba(0, 0, 0, 0.05); /* Sombra extra sutil preta */
+  box-shadow: 0 4px 24px rgba(97, 97, 97, 0.12), 0 1.5px 3px rgba(0, 0, 0, 0.05);
   border-radius: 1rem;
   transition: box-shadow 0.2s;
 }
 
-/* Media Query para ajustar o texto do Hero em telas menores */
-@media (max-width: 500px) {
-  /*  .hero-text {
-    top: 65%;
-  } */
+/* ======================================================================= */
+/*  MEDIA QUERIES                                                          */
+/*  Mobile-first: regras extras para telas maiores.                        */
+/* ======================================================================= */
 
+/* Ajustes finos para o texto do hero em telas menores */
+@media (max-width: 500px) {
   .hero-text h1 {
     font-size: clamp(1rem, 4vw, 4rem);
   }
@@ -384,10 +383,10 @@ img {
   }
 }
 
+/* A partir de 500px: some o <br> forçado do título e reposiciona o texto */
 @media (min-width: 500px) {
   .hero-text {
-    /* Sobe o texto para compensar a quebra de linha e evitar que saia da imagem */
-    top: 78%;
+    top: 78%; /* sobe o texto para compensar menos quebras de linha */
   }
 
   .mobile-break {
@@ -395,30 +394,29 @@ img {
   }
 }
 
-/* 
-  REQUISITO 4: Media Query para Tablet
-  A partir de 768px, o layout de posts recentes vira duas colunas.
+/*
+  REQUISITO 4: Tablet.
+  A partir de 768px, a grade de posts recentes vira duas colunas.
 */
 @media (min-width: 768px) {
   .posts-grid {
-    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Header maior e alinhado à esquerda em telas médias+ */
   .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    height: 7rem;
-    padding: 0 5rem; /* Mesmo padding lateral do .main-content em mobile */
-
-    > h1 {
-      font-size: 3.6rem;
-    }
+    justify-content: flex-start;
+    padding: 0 5rem;
   }
 
+  .header-container > h1 {
+    font-size: 3.6rem;
+  }
+
+  /* Hero troca para imagem desktop e nova proporção */
   .hero {
     background-image: url("images/hero-image.jpg");
-    aspect-ratio: 744 / 396; /* Proporção da imagem de desktop */
+    aspect-ratio: 744 / 396;
   }
 
   .hero-text {
@@ -427,25 +425,20 @@ img {
   }
 }
 
-/* 
-  REQUISITO 4: Media Query para Desktop
-  A partir de 1150px, ativamos o layout principal de duas colunas (esquerda e direita).
+/*
+  REQUISITO 4: Desktop.
+  A partir de 1150px, main vira duas colunas lado a lado.
 */
 @media (min-width: 1150px) {
   .header-container {
-    padding: 0 12rem; /* Mesmo padding lateral do .main-content em desktop */
+    padding: 0 12rem; /* mesma largura visual do conteúdo principal */
   }
 
   .main-content {
-    flex-direction: row; /* Colunas lado a lado */
-    align-items: flex-start; /* Alinha as colunas no topo */
-
-    /* max-width: 112.8rem; (744px + 360px + 24px de gap) */
-
-    /* margin: 0 auto;  Centraliza o container principal */
+    flex-direction: row; /* colunas lado a lado */
+    align-items: flex-start;
     padding: 6rem 12rem;
-
-    justify-content: center; /*  */
+    justify-content: center;
   }
 
   .blog-header h1 {
@@ -460,7 +453,8 @@ img {
     font-size: clamp(1rem, 1vw, 2rem);
   }
 
-  S .left-column {
+  /* Larguras aproximadas para manter proporções do Figma */
+  .left-column {
     width: 103.4rem; /* 1034px */
   }
 
@@ -469,16 +463,11 @@ img {
   }
 }
 
-/* 
-  REQUISITO 4: Media Query para Ultrawide
-  A partir de 1400px, apenas garantimos que o conteúdo permaneça centralizado e com largura máxima,
-  evitando que o layout se estique demais.
+/*
+  REQUISITO 4: Ultrawide.
+  A partir de 1400px, apenas ajusta o posicionamento do texto no hero.
 */
 @media (min-width: 1400px) {
-  .main-content {
-    /*   max-width: 112.8rem;  Mantém a largura máxima do desktop */
-  }
-
   .hero-text {
     top: 80%;
   }
