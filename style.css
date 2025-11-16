@@ -147,9 +147,25 @@ img {
 /* ======================================================================= */
 
 /* Título da seção de posts recentes */
-.recent-posts h2 {
-  font-size: 2.4rem;
-  margin-bottom: 1.6rem;
+.recent-posts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #02a28f;
+  border-radius: 0.8rem;
+  padding: 1.6rem 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.recent-posts-header h2 {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.recent-posts-header a {
+  color: #fff;
+  font-size: 1.4rem;
+  text-decoration: underline;
 }
 
 /*
