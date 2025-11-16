@@ -192,6 +192,7 @@ img {
 /* Imagem do topo do card (conteúdo) */
 .post-card img {
   width: 100%;
+  /* 'height' garante a altura padrão em todas as imagens e 'cover' preenche o contêiner sem distorcer a imagem. */
   height: 18rem;
   object-fit: cover;
   border-radius: 1rem 1rem 0 0;
@@ -302,7 +303,7 @@ img {
 .popular-posts .small-post {
   display: flex;
   gap: 1.6rem;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 1.6rem;
   padding: 1.2rem;
   background-color: #fff;
@@ -326,7 +327,7 @@ img {
 /* Data em posts populares */
 .small-post-content .date {
   font-size: 1.2rem;
-  color: #999;
+  color: #616161;
 }
 
 /* Box de categorias */
@@ -406,7 +407,6 @@ img {
   /* Header maior e alinhado à esquerda em telas médias+ */
   .header-container {
     justify-content: flex-start;
-    padding: 0 5rem;
   }
 
   .header-container > h1 {
@@ -460,15 +460,5 @@ img {
 
   .right-column {
     width: 47rem; /* 470px */
-  }
-}
-
-/*
-  REQUISITO 4: Ultrawide.
-  A partir de 1400px, apenas ajusta o posicionamento do texto no hero.
-*/
-@media (min-width: 1400px) {
-  .hero-text {
-    top: 80%;
   }
 }
