@@ -307,12 +307,18 @@ img {
 /* ======================================================================= */
 
 /* Título de seções na sidebar (Posts populares / Categorias) */
-.section-title {
-  border: 0.2rem solid #02a28f;
-  padding: 1.2rem;
-  font-size: 1.8rem;
+.popular-posts-header {
+  background-color: #02a28f;
+  padding: 1.6rem 2.4rem;
+  border-radius: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.popular-posts-header .section-title {
+  font-size: 2rem;
+  color: #fff;
   text-align: center;
-  margin: 0 0 1.6rem 0;
+  margin: 0;
 }
 
 /* Card compacto de post popular */
@@ -438,6 +444,10 @@ img {
   .hero-text {
     top: 75%;
     left: 3.2%;
+  }
+
+  .popular-posts-header .section-title {
+    text-align: left;
   }
 }
 
