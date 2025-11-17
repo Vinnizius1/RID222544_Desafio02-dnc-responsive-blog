@@ -4,7 +4,7 @@
 
 ## 🚀 Live Demo & Figma
 
-- **Live Site (Netlify):** [**...**]
+- **Live Site (Netlify):** [**Link para o site live**](https://desafio02-dnc-rid222544.netlify.app/)
 - **Figma Design:** [Link para o arquivo Figma original](https://www.figma.com/design/tI1YsslgD5Oao1tAclxlfA/Blog-responsivo---DNC?node-id=108-2&t=s0Z06EWm2Ud8Tewk-0)
 
 ## 🛠️ Technologies & Concepts
